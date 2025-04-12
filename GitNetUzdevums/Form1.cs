@@ -77,5 +77,64 @@ namespace WindowsFormsApplication_15
                 x += step;
             }
         }
+
+        private void btn1_Click(object sender, EventArgs e)
+        {
+            double m = 30;
+            int xc = pictureBox1.Width / 2;
+            int yc = pictureBox1.Height / 2;
+            int xe, ye;
+            double x, y;
+            double step = 0.005;
+            Graphics G = pictureBox1.CreateGraphics();
+            G.Clear(Color.White);
+            Pen axisPen = new Pen(Color.Silver);
+            G.DrawLine(axisPen, 10, yc, pictureBox1.Width - 10, yc); 
+            G.DrawLine(axisPen, xc, 10, xc, pictureBox1.Height - 10); 
+            Pen graphPen = new Pen(Color.Blue);
+            x = 0.01;
+            while (x < 10)
+            {
+                try
+                {
+                    y = Math.Log(x);
+                    xe = (int)(xc + m * x);
+                    ye = (int)(yc - m * y);
+                    G.DrawEllipse(graphPen, xe, ye, 1, 1);
+                }
+                catch { }
+                x += step;
+            }
+        }
+
+
+        private void btn2_Click(object sender, EventArgs e)
+        {
+            double m = 30; 
+            int xc = pictureBox1.Width / 2;
+            int yc = pictureBox1.Height / 2;
+            int xe, ye;
+            double x, y;
+            double step = 0.005;
+            Graphics G = pictureBox1.CreateGraphics();
+            G.Clear(Color.White);
+            Pen axisPen = new Pen(Color.Silver);
+            G.DrawLine(axisPen, 10, yc, pictureBox1.Width - 10, yc); 
+            G.DrawLine(axisPen, xc, 10, xc, pictureBox1.Height - 10); 
+            x = 0;
+            while (x < 10)
+            {
+                try
+                {
+                    y = Math.Sqrt(x);
+                    xe = (int)(xc + m * x);
+                    ye = (int)(yc - m * y);
+                    G.DrawEllipse(graphPen, xe, ye, 1, 1);
+                }
+                catch { }
+                x += step;
+            }
+        }
+
     }
 }
